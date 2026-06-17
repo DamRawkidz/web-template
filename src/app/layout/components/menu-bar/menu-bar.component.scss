@@ -1,0 +1,42 @@
+.app-sidebar {
+  min-width: 280px;
+  max-width: 280px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #0f4bc4 0%, #1152d4 40%, #0e3f9f 100%);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 8px 0 26px rgba(15, 23, 42, 0.2);
+}
+
+.sidebar-brand {
+  height: 72px;
+  padding: 0.9rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.brand-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 0.7rem;
+  color: #dbe7ff;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.brand-text span {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+}
+
+.sidebar-menu-list {
+  padding: 0.75rem 0;
+  overflow: auto;
+}

@@ -1,0 +1,69 @@
+<div class="assign-page">
+  <header class="header">
+    <h1>LAPD Assignments</h1>
+    <button mat-stroked-button color="primary" (click)="loadData()">
+      <mat-icon>refresh</mat-icon>
+      Refresh
+    </button>
+  </header>
+
+  <section *ngIf="isLoading" class="loading">
+    <mat-spinner diameter="42"></mat-spinner>
+  </section>
+
+  <section *ngIf="!isLoading" class="content">
+    <form class="assign-form" [formGroup]="assignForm" (ngSubmit)="submitAssignment()">
+      <mat-form-field appearance="outline">
+        <mat-label>Squad Group</mat-label>
+        <mat-select formControlName="groupId">
+          <mat-option *ngFor="let group of groups" [value]="group.id">{{ group.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Officer</mat-label>
+        <mat-select formControlName="userId">
+          <mat-option *ngFor="let profile of profiles" [value]="profile.id">
+            {{ getFullName(profile) }} ({{ profile.lapd_code || '-' }})
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Role in Squad</mat-label>
+        <mat-select formControlName="isLeader">
+          <mat-option [value]="false">Member</mat-option>
+          <mat-option [value]="true">Leader</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" type="submit" [disabled]="isSaving">
+        <mat-icon>group_add</mat-icon>
+        Assign
+      </button>
+    </form>
+
+    <div class="status" *ngIf="message || errorMessage">
+      <p class="success" *ngIf="message">{{ message }}</p>
+      <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+    </div>
+
+    <div class="groups">
+      <article class="group-card" *ngFor="let group of groups; trackBy: trackByGroup">
+        <div class="title-row">
+          <h2>{{ group.name }}</h2>
+          <span>{{ group.members?.length || 0 }} assigned</span>
+        </div>
+
+        <ul>
+          <li *ngFor="let member of group.members">
+            <span>{{ getFullName(member.user!) }}</span>
+            <span class="tag" [class.leader]="member.is_leader">
+              {{ member.is_leader ? 'Leader' : 'Member' }}
+            </span>
+          </li>
+        </ul>
+      </article>
+    </div>
+  </section>
+</div>

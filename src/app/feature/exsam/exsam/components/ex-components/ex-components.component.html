@@ -1,0 +1,65 @@
+<p>ex-components works!</p>
+
+<!--
+@let user = userSV$ | async
+
+@if(user) {
+  @for (item of user; track $index) {
+    <div>{{ user.name }}</div>
+  }
+
+
+  @for (item of user; track $index) {
+    <h1>{{ user.name }}</h1>
+  }
+} -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form [formGroup]="form">
+  {{ user}}
+  <span>input</span>
+  <input formControlName="firstName">
+  <h1>Form Array Name</h1>
+  <ng-container formArrayName="address">
+    @for (form of form['controls']['address']['controls']; track $index;let i =$index) {
+    <ng-container [formGroupName]="i">
+      <input formControlName="road">
+    </ng-container>
+    }
+  </ng-container>
+  <button (click)="addFormArray()">add form Array</button>
+  <h1>Form group Name</h1>
+  <ng-container formGroupName="special">
+    <input type="checkbox" formControlName="isModernStyle">
+  </ng-container>
+
+</form>
+<pre>{{ form.getRawValue()| json }}</pre>

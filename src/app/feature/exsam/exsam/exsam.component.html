@@ -1,0 +1,26 @@
+<div class="flex flex-row justify-between">
+  <mat-form-field appearance="fill">
+    <input matInput />
+  </mat-form-field>
+  <button mat-raised-button>text</button>
+  <button mat-raised-button color="primary">text</button>
+  <mat-form-field>
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+<br>
+
+<app-ex-components isExpaned age="10" data="ng" name="test" />
+
+
+<app-custom>
+  <div custom>
+    <h1>custom text</h1>
+  </div>
+</app-custom>
+<br>
+<router-outlet></router-outlet>

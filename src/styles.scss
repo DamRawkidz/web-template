@@ -1,0 +1,206 @@
+/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "src/app/themes/default-theme.scss";
+
+// @include mat.all-legacy-component-typographies();
+// @include mat.legacy-core();
+// @include mat.all-component-themes($default-theme);
+@include mat.elevation-classes();
+@include mat.app-background();
+
+// $custom-typography: mat-typography-config(
+//   $font-family: ''
+// );
+
+// @include angular-material-typography($custom-typography);
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(17, 82, 212, 0.1), transparent 30%),
+    linear-gradient(180deg, #f7f9ff 0%, #f3f6fc 100%);
+  color: #0f172a;
+}
+
+input[type="number"]:focus {
+  outline: none !important;
+  box-shadow: none;
+}
+
+:root {
+  --lh-primary: #1152d4;
+  --lh-primary-soft: #dbe7ff;
+  --lh-surface: #ffffff;
+  --lh-surface-muted: #f8faff;
+  --lh-border: #cdd9ef;
+  --lh-text-muted: #64748b;
+  --lh-radius-md: 12px;
+  --lh-radius-lg: 16px;
+  --lh-shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
+  --lh-shadow-focus: 0 0 0 4px rgba(17, 82, 212, 0.15);
+}
+
+.mat-mdc-paginator-container {
+  display: flex !important;
+  flex-flow: row !important;
+  justify-content: space-between !important;
+}
+
+textarea.mat-mdc-input-element {
+  min-height: 88px !important;
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+  display: none;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field {
+  border-radius: var(--lh-radius-md) !important;
+  background: var(--lh-surface) !important;
+  box-shadow: var(--lh-shadow-sm);
+  padding: 0 10px !important;
+}
+
+.mat-mdc-text-field-wrapper .mat-mdc-form-field-flex {
+  height: 44px;
+  align-items: center;
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  min-height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  top: 0 !important;
+  display: flex;
+  align-items: center;
+}
+
+.mat-mdc-input-element {
+  margin: 0 !important;
+  height: 24px;
+  line-height: 24px !important;
+  align-self: center;
+}
+
+.mat-mdc-text-field-wrapper .mdc-text-field__input {
+  margin: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  align-self: center;
+}
+
+.mat-mdc-text-field-wrapper .mdc-text-field__input::placeholder {
+  line-height: 24px !important;
+}
+
+/* Center resting (non-floated) mat-label text vertically in outlined fields */
+.mat-mdc-form-field .mdc-text-field--outlined .mdc-floating-label:not(.mdc-floating-label--float-above) {
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+.mat-mdc-form-field .mat-mdc-form-field-icon-prefix {
+  color: #4f7be8;
+  padding-right: 6px;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  box-shadow: none !important;
+}
+
+.mat-mdc-form-field .mdc-text-field__affix,
+.mat-mdc-form-field .mdc-text-field__affix--prefix,
+.mat-mdc-form-field .mdc-text-field__affix--suffix {
+  border-left: 0 !important;
+  border-right: 0 !important;
+  box-shadow: none !important;
+}
+
+.mat-mdc-form-field .mdc-notched-outline__leading,
+.mat-mdc-form-field .mdc-notched-outline__trailing {
+  border-color: var(--lh-border) !important;
+}
+
+.mat-mdc-form-field .mdc-notched-outline__notch {
+  border-top-color: var(--lh-border) !important;
+  border-bottom-color: var(--lh-border) !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+}
+
+.mat-mdc-form-field.mat-focused .mdc-text-field {
+  box-shadow: var(--lh-shadow-focus) !important;
+}
+
+.mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
+.mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
+  border-width: 2px !important;
+  border-color: var(--lh-primary) !important;
+}
+
+.mat-mdc-form-field.mat-focused .mdc-notched-outline__notch {
+  border-top-width: 2px !important;
+  border-bottom-width: 2px !important;
+  border-top-color: var(--lh-primary) !important;
+  border-bottom-color: var(--lh-primary) !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+}
+
+[type="text"]:focus,
+[type="email"]:focus,
+[type="url"]:focus,
+[type="password"]:focus,
+[type="number"]:focus,
+[type="date"]:focus,
+[type="datetime-local"]:focus,
+[type="month"]:focus,
+[type="search"]:focus,
+[type="tel"]:focus,
+[type="time"]:focus,
+[type="week"]:focus,
+[multiple]:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: none;
+}
+
+.mat-mdc-raised-button {
+  border-radius: 9999px !important;
+  min-width: 150px !important;
+}
+
+.mat-mdc-unelevated-button.mat-primary,
+.mat-mdc-raised-button.mat-primary {
+  border-radius: var(--lh-radius-md) !important;
+  box-shadow: 0 10px 22px rgba(17, 82, 212, 0.24);
+}
+
+.mat-mdc-button,
+.mat-mdc-outlined-button {
+  border-radius: var(--lh-radius-md) !important;
+}
+
+.mat-mdc-card,
+.mat-expansion-panel,
+.mat-mdc-table {
+  border-radius: var(--lh-radius-lg) !important;
+}
+
+.mat-primary {
+  .mdc-button__label {
+    color: white !important;
+  }
+}

@@ -1,0 +1,31 @@
+.app-toolbar-shell {
+  background: linear-gradient(90deg, #0f4bc4 0%, #1152d4 55%, #2a67de 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 8px 20px rgba(17, 82, 212, 0.28);
+}
+
+.app-toolbar {
+  height: 64px;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toolbar-left,
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toolbar-icon-btn {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 12px;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.22);
+  }
+}

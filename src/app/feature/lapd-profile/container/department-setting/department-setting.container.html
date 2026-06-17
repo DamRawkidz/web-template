@@ -1,0 +1,90 @@
+<div class="setting-page">
+  <header class="setting-header">
+    <button mat-button type="button" (click)="onBack()">
+      <mat-icon>arrow_back</mat-icon>
+      Back to List
+    </button>
+    <h1>Department Settings</h1>
+  </header>
+
+  <section *ngIf="isLoading" class="loading-state">
+    <mat-spinner diameter="40"></mat-spinner>
+  </section>
+
+  <section class="grid" *ngIf="!isLoading">
+    <article class="card">
+      <h2>Create Department</h2>
+      <form [formGroup]="createForm" class="row-form">
+        <mat-form-field appearance="outline">
+          <mat-label>Department Name</mat-label>
+          <input matInput formControlName="name" />
+          <mat-error *ngIf="createForm.controls.name.invalid">Department name is required</mat-error>
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" type="button" [disabled]="isSaving" (click)="onCreate()">
+          <mat-icon>add</mat-icon>
+          Add Department
+        </button>
+      </form>
+    </article>
+
+    <article class="card">
+      <h2>Edit Department</h2>
+      <form [formGroup]="editForm" class="row-form">
+        <mat-form-field appearance="outline">
+          <mat-label>Department Name</mat-label>
+          <input matInput formControlName="name" />
+          <mat-error *ngIf="editForm.controls.name.invalid">Department name is required</mat-error>
+        </mat-form-field>
+
+        <mat-slide-toggle formControlName="is_active">Active</mat-slide-toggle>
+
+        <button mat-flat-button color="primary" type="button" [disabled]="isSaving || !editForm.value.id" (click)="onUpdate()">
+          <mat-icon>save</mat-icon>
+          Save Department
+        </button>
+      </form>
+    </article>
+  </section>
+
+  <section class="card" *ngIf="!isLoading">
+    <h2>Department List</h2>
+    <div class="list">
+      <div
+        class="list-item"
+        *ngFor="let department of departments"
+        role="button"
+        tabindex="0"
+        (click)="selectDepartment(department)"
+        (keydown.enter)="selectDepartment(department)"
+        (keydown.space)="$event.preventDefault(); selectDepartment(department)">
+        <span class="department-name">{{ department.name }}</span>
+        <span class="actions">
+          <span class="status" [class.inactive]="!department.is_active">
+            {{ department.is_active ? 'Active' : 'Inactive' }}
+          </span>
+          <button
+            mat-icon-button
+            type="button"
+            color="warn"
+            [disabled]="isSaving"
+            aria-label="Delete department"
+            (click)="onDelete(department, $event)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="status" *ngIf="errorMessage || successMessage">
+    <div class="error" *ngIf="errorMessage">
+      <mat-icon>error_outline</mat-icon>
+      <span>{{ errorMessage }}</span>
+    </div>
+    <div class="success" *ngIf="successMessage">
+      <mat-icon>check_circle</mat-icon>
+      <span>{{ successMessage }}</span>
+    </div>
+  </section>
+</div>

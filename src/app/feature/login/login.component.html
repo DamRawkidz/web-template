@@ -1,0 +1,41 @@
+<div class="login-page">
+  <mat-card class="login-card">
+    <div class="brand-row">
+      <mat-icon>shield</mat-icon>
+      <h1>LAPD Control Login</h1>
+    </div>
+    <p>Sign in with authorized account to access LAPD dashboard.</p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="userName" autocomplete="username" />
+        <mat-error *ngIf="form.controls.userName.invalid">Username is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          [type]="hidePassword ? 'password' : 'text'"
+          formControlName="password"
+          autocomplete="current-password"
+        />
+        <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+          <mat-icon>{{ hidePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="form.controls.password.invalid">Password is required</mat-error>
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" type="submit" [disabled]="isSubmitting">
+        <mat-spinner *ngIf="isSubmitting" diameter="18"></mat-spinner>
+        <span *ngIf="!isSubmitting">Sign In</span>
+      </button>
+    </form>
+
+    <div class="error" *ngIf="errorMessage">
+      <mat-icon>error_outline</mat-icon>
+      <span>{{ errorMessage }}</span>
+    </div>
+  </mat-card>
+</div>
