@@ -9,13 +9,13 @@
   </div>
 
   <div class="sidebar-menu-list">
-    <ng-container *ngFor="let menu of menus">
-      <ng-container *ngIf="menu?.type == 'basic'">
+    @for (menu of menus; track menu) {
+      @if (menu?.type == 'basic') {
         <app-basic-menu [item]="menu"></app-basic-menu>
-      </ng-container>
-      <ng-container *ngIf="menu?.type == 'collapsable' ">
+      }
+      @if (menu?.type == 'collapsable' ) {
         <app-collapsable [item]="menu"></app-collapsable>
-      </ng-container>
-    </ng-container>
+      }
+    }
   </div>
 </aside>

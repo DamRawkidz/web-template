@@ -23,7 +23,7 @@ export const environment = {
     scope: window["env"].CLIENTSETTINGS.SCOPE,
     filterProtocolClaims: window["env"].CLIENTSETTINGS.FILTERPROROCOLCLAIMS,
     loadUserInfo: window["env"].CLIENTSETTINGS.LOADUSERINFO
-  }
+  }``
 };
 
 /*

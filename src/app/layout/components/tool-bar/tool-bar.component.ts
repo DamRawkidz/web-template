@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, OnInit, ChangeDetectionStrategy, EventEmitter, Output, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenService } from 'src/app/core/service/authen.service';
@@ -12,9 +12,8 @@ import { mat } from 'src/app/shared/shared';
     styleUrls: ['./tool-bar.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        mat,
-        CommonModule
-    ]
+    mat
+]
 })
 export class ToolBarComponent implements OnInit {
 

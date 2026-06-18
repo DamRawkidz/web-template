@@ -6,15 +6,17 @@
     </a>
   </div>
 
-    <div class="se_item_children" *ngIf="!isCollapsed" @expandCollapse>
-      <ng-container *ngFor="let menuChilden of item.children; trackBy: identify">
-        <ng-container *ngIf="menuChilden.type == 'basic'">
-            <app-basic-menu [item]="menuChilden"></app-basic-menu>
-          </ng-container>
-          <ng-container *ngIf="menuChilden.type == 'collapsable'">
-            <app-collapsable [item]="menuChilden"></app-collapsable>
-          </ng-container>
-    </ng-container>
+  @if (!isCollapsed) {
+    <div class="se_item_children" @expandCollapse>
+      @for (menuChilden of item.children; track identify($index, menuChilden)) {
+        @if (menuChilden.type == 'basic') {
+          <app-basic-menu [item]="menuChilden"></app-basic-menu>
+        }
+        @if (menuChilden.type == 'collapsable') {
+          <app-collapsable [item]="menuChilden"></app-collapsable>
+        }
+      }
     </div>
+  }
 
 </div>

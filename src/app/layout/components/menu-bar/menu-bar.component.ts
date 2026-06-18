@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, inject } from '@angular/core';
 import { SeItem, routes } from 'src/app/core/data/navigator';
 import { mat } from 'src/app/shared/shared';
@@ -16,11 +16,10 @@ import { ApptokenService } from 'src/app/core/service/apptoken.service';
     styleUrls: ['./menu-bar.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        CommonModule,
-        mat,
-        CollapsableComponent,
-        BasicMenuComponent
-    ]
+    mat,
+    CollapsableComponent,
+    BasicMenuComponent
+]
 })
 export class MenuBarComponent implements OnInit {
   menus =  routes
