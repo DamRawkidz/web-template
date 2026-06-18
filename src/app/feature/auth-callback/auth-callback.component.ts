@@ -19,14 +19,7 @@ export class AuthCallbackComponent implements OnInit {
   router = inject(Router)
 
   ngOnInit(): void {
-    this.authenSV.loaduser().pipe(
-      concatMap(() => this.appToken.genToken()),
-      tap(() => this.router.navigate(['/app/example'])),
-      catchError(err => {
-        // this.authenSV.logout()
-        return throwError(err)
-      })
-    ).subscribe()
+    
   }
 
 }

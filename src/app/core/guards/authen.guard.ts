@@ -4,12 +4,7 @@ import { AuthenService } from '../service/authen.service';
 
 export const authenGuard: CanActivateFn = (route, state) => {
   const authenSV = inject(AuthenService)
-  if(authenSV.isLoggin()){
-    return true
-  }
-
-  authenSV.login()
-  return false
+  return true
 };
 
 
