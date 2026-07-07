@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { AuthCallbackComponent } from './feature/auth-callback/auth-callback.component';
 import { authenGuard } from './core/guards/authen.guard';
-import { LoginComponent } from './feature/login/login.component';
+
 
 
 export const appRoutes: Routes = [
