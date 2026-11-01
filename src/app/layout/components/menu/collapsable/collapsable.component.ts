@@ -11,6 +11,7 @@ import { BasicMenuComponent } from '../basic-menu/basic-menu.component';
     styleUrls: ['./collapsable.component.scss'],
     // changeDetection: ChangeDetectionStrategy.OnPush,
     animations: SEAnimations,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         mat,

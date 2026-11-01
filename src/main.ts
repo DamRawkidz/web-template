@@ -18,11 +18,10 @@ import { provideEffects } from '@ngrx/effects';
 import { provideRouterStore } from '@ngrx/router-store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { metaReducers } from './app/state/state.config';
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi, withInterceptors} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi, withInterceptors, withXhr } from '@angular/common/http';
 import { tokenIntercepter } from './app/core/intercepter/token-intercepter.interceptor';
 import { BACKEND_URL } from 'seventy-one-base';
-import { KeycloakService } from 'keycloak-angular';
-import { initializeSSOService } from './app/core/service/keycloak-utility';
+
 
 
 if (environment.production) {
@@ -33,7 +32,7 @@ if (environment.production) {
 bootstrapApplication(AppComponent, {
 
   providers: [
-    provideHttpClient(
+    provideHttpClient(withXhr(), 
       // withInterceptorsFromDi()
       withInterceptors([
         tokenIntercepter
@@ -60,11 +59,11 @@ bootstrapApplication(AppComponent, {
     //   useClass: TokenIntercepterInterceptor,
     //   multi   : true
     // },
-    KeycloakService,
-    provideAppInitializer(() => {
-        const initializerFn = (initializeSSOService)(inject(KeycloakService));
-        return initializerFn();
-      }),
+    // KeycloakService,
+    // provideAppInitializer(() => {
+    //     const initializerFn = (initializeSSOService)(inject(KeycloakService));
+    //     return initializerFn();
+    //   }),
     { provide: LOCALE_ID, useValue: 'th-TH'},
     { provide: MAT_DATE_FORMATS, useValue: PICK_FORMATS},
     { provide: DateAdapter, useClass: AppDateAdapter},

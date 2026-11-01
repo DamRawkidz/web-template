@@ -1,6 +1,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "isolatedModules": true,
+    "module": "Node16",
+    "moduleResolution": "Node16",
     "outDir": "./out-tsc/spec",
     "types": [
       "node",
@@ -14,5 +17,14 @@
   "include": [
     "src/**/*.spec.ts",
     "src/**/*.d.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    // "extendedDiagnostics": {
+    //   "checks": {
+    //     "nullishCoalescingNotNullable": "suppress",
+    //     "optionalChainNotNullable": "suppress"
+    //   }
+    // },
+    "strictTemplates": false
+  }
 }

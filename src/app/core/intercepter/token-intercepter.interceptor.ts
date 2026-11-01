@@ -2,9 +2,9 @@
 import { HttpHandlerFn, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthenService, SSO } from '../service/authen.service';
+import { AuthenService } from '../service/authen.service';
 import { ApptokenService } from '../service/apptoken.service';
-import { OdicService } from '../service/odic.service';
+
 import { environment } from 'src/environments/environment';
 
 // @Injectable()
@@ -38,22 +38,23 @@ export const tokenIntercepter: HttpInterceptorFn = (
 
 
 const createHedaer = (url: string) => {
-  let authenSV = inject(AuthenService)
-  let odicSV = inject(OdicService)
-  let appToken = inject(ApptokenService)
-  let useSso  = environment.useSSO
+  return ""
+  // let authenSV = inject(AuthenService)
+  // let odicSV = inject(OdicService)
+  // let appToken = inject(ApptokenService)
+  // let useSso  = environment.useSSO
 
-  if(url.includes('app_tokens') && useSso == SSO.OPENID){
-    return odicSV.getAuthorizationHeaderValue()
-  }
+  // if(url.includes('app_tokens') && useSso == SSO.OPENID){
+  //   return odicSV.getAuthorizationHeaderValue()
+  // }
 
-  if(url.includes('key_cloak_app_tokens') && useSso == SSO.KEYCLOAK) {
-    const token = authenSV.getToken()
-    return token ? `Bearer ${token}` : ''
-  }
+  // if(url.includes('key_cloak_app_tokens') && useSso == SSO.KEYCLOAK) {
+  //   const token = authenSV.getToken()
+  //   return token ? `Bearer ${token}` : ''
+  // }
 
-  const token = appToken.getToken()
-  return token ? `Bearer ${token}` : ''
+  // const token = appToken.getToken()
+  // return token ? `Bearer ${token}` : ''
 
 
 }

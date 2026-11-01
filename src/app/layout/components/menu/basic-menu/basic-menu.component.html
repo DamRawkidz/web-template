@@ -1,8 +1,8 @@
 <div class="se_item_warpper">
   @if (item?.link && !item?.externalLink && !item?.function && !item?.disabled) {
     <a class="se_item hover:cursor-pointer"
-      [ngClass]="{'fuse-vertical-navigation-item-active-forced': item?.active}"
-      [routerLink]="[item?.link]"
+      [ngClass]="{'fuse-vertical-navigation-item-active-forced': $safeNavigationMigration(item?.active)}"
+      [routerLink]="[$safeNavigationMigration(item?.link)]"
       [routerLinkActive]="'se_item_active'">
       {{ item?.title }}
     </a>

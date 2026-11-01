@@ -36,10 +36,10 @@ export class MenuBarComponent implements OnInit {
 
 
   ngOnInit(): void {
-    const rights = this.appToken?.payload?.rights;
-    if (Array.isArray(rights) && rights.length > 0) {
-      this.menus = filterPermissionMenu(routes, this.appToken.payload);
-    }
+    // const rights = this.appToken?.payload?.rights;
+    // if (Array.isArray(rights) && rights.length > 0) {
+    //   this.menus = filterPermissionMenu(routes, this.appToken.payload);
+    // }
   }
 
   updateNavigator(_link: string, _routes: SeItem[]){
@@ -52,7 +52,7 @@ export class MenuBarComponent implements OnInit {
 
 
 
-  identify(index, item) {
+  identify(index: any, item: any) {
     return index;
   }
 
