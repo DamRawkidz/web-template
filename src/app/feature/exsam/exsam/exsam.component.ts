@@ -21,11 +21,11 @@ import { CustomComponent } from './components/custom/custom.component';
 export class ExsamComponent implements OnInit {
   // @Input({ transform: numberAttribute }) count: number = 0
   @Input({ transform: numberAttribute }) id :string = ''
-  @Input() example: string
-  @Input() data2: string
+  @Input() example: string = ''
+  @Input() data2: string = ''
 
-  @Input() query: string
-  @Input() query2: string
+  @Input() query: string = ''
+  @Input() query2: string = ''
   // route parameters
   // query parameters
   // route data from data property

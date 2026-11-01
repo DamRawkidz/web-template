@@ -18,7 +18,7 @@ import { provideEffects } from '@ngrx/effects';
 import { provideRouterStore } from '@ngrx/router-store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { metaReducers } from './app/state/state.config';
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi, withInterceptors} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi, withInterceptors, withXhr } from '@angular/common/http';
 import { tokenIntercepter } from './app/core/intercepter/token-intercepter.interceptor';
 import { BACKEND_URL } from 'seventy-one-base';
 
@@ -32,7 +32,7 @@ if (environment.production) {
 bootstrapApplication(AppComponent, {
 
   providers: [
-    provideHttpClient(
+    provideHttpClient(withXhr(), 
       // withInterceptorsFromDi()
       withInterceptors([
         tokenIntercepter
